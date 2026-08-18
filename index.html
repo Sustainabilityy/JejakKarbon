@@ -1316,69 +1316,49 @@ function saveLocal() {
   localStorage.setItem(BASE_KEY, JSON.stringify(state)); 
 }  
   
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw534EnClKVYNITPTCCYLmVXLjX326qZvcADQSttqfLuVsKyWV3LyGCJuwVRucTHeUNvg/exec'; 
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxMvIpQSv_CRWV5Qt_ccyBYC18poxoLSHDRznitF4YYfsatNQQQPtVrnMx18SxWcq8I0Q/exec'; 
 
 // ==============================================
 // === FETCH CHAT & GROUPS DARI SERVER (SYNC) ===
 // ==============================================
 async function fetchChatMessages() {
+  if(!state.profile.userId) return;
   try {
-    const res = await fetch(SCRIPT_URL + "?action=get_chats");
+    const res = await fetch(SCRIPT_URL + "?action=get_chats&userId=" + encodeURIComponent(state.profile.userId));
     const data = await res.json();
-    if(data.status === 'success' && data.data) {
+    
+    if (data.status === 'success') {
+      // 1. Sinkronisasi Grup Privat
+      if(data.myGroups) {
+         chatGroups = [];
+         for(let key in data.myGroups) {
+             chatGroups.push(data.myGroups[key]); 
+         }
+      }
+      
+      // 2. Sinkronisasi Pesan & Reaksi
       allChatMessages = data.data.map(serverMsg => {
-        let localExist = allChatMessages.find(m => String(m.timestamp) === String(serverMsg.timestamp));
-        
-        let parsedReactions = {};
-        if (serverMsg.reactions) {
-            try {
-                parsedReactions = typeof serverMsg.reactions === 'string' ? JSON.parse(serverMsg.reactions) : serverMsg.reactions;
-            } catch(e) { parsedReactions = {}; }
-        } else if (localExist && localExist.reactions) {
-            parsedReactions = localExist.reactions;
-        }
-
-        if (localExist) {
-            return {
-                ...serverMsg,
-                message: serverMsg.message !== undefined ? serverMsg.message : localExist.message,
-                media: serverMsg.media || localExist.media || null,
-                reactions: parsedReactions
-            };
-        }
-        return {
-            ...serverMsg,
-            reactions: parsedReactions
-        };
+         let parsedReactions = {};
+         if (serverMsg.reactions) {
+             try { parsedReactions = typeof serverMsg.reactions === 'string' ? JSON.parse(serverMsg.reactions) : serverMsg.reactions; } catch(e){}
+         }
+         return {
+             ...serverMsg,
+             reactions: parsedReactions
+         };
       });
-
-      // Sinkronisasi Grup dari Pesan Tipe Khusus / Server Payload
-      data.data.forEach(m => {
-          if (m.type === 'group_meta' && m.groupData) {
-              try {
-                  let gInfo = typeof m.groupData === 'string' ? JSON.parse(m.groupData) : m.groupData;
-                  if (gInfo && gInfo.id) {
-                      let existIdx = chatGroups.findIndex(g => g.id === gInfo.id);
-                      if (existIdx >= 0) {
-                          chatGroups[existIdx] = gInfo;
-                      } else {
-                          chatGroups.push(gInfo);
-                      }
-                  }
-              } catch(err) {}
-          }
-      });
-
+      
       saveLocalChatData();
       updateChatBadge();
       renderChatRoomsList();
-      if (currentActiveRecipient) {
-          renderChatMessages();
+      if(currentActiveRecipient) {
+         renderChatMessages();
       }
     }
-  } catch(e) {}
+  } catch(e) {
+      console.log("Server Sync Pending...");
+  }
 }
-
 function saveLocalChatData() {
     state.chatGroups = chatGroups;
     state.chatMessages = allChatMessages;
@@ -1781,8 +1761,12 @@ function renderChatMessages() {
     }
 
     let mediaHtml = '';
-    if(m.media) {
-        mediaHtml = `<img src="${m.media}" class="chat-media-attachment" alt="Photo" onclick="openImageLightbox('${m.media}')" title="Klik untuk memperbesar & download">`;
+    if(m.photo && m.photo.startsWith('http')) {
+        mediaHtml = `<img src="${m.photo}" class="chat-media-attachment" alt="Photo" onclick="openImageLightbox('${m.photo}')" title="Klik untuk memperbesar & download">`;
+    } else if (m.photo && m.photo.startsWith('data:image')) {
+        mediaHtml = `<img src="${m.photo}" class="chat-media-attachment" alt="Photo" onclick="openImageLightbox('${m.photo}')" title="Klik untuk memperbesar & download">`;
+    } else if (m.media) { // Fallback history lama
+        mediaHtml = `<img src="${m.media}" class="chat-media-attachment" alt="Photo" onclick="openImageLightbox('${m.media}')">`;
     }
 
     let reactionsHtml = '';
@@ -1871,25 +1855,41 @@ function openCreateGroupModal() {
 
 async function submitCreateGroup() {
   const groupName = $('newGroupNameInput').value.trim();
-  if(!groupName) return toast('⚠️ Nama grup wajib diisi!');
-
-  const checkboxes = document.querySelectorAll('input[name="groupMemberChk"]:checked');
-  let members = [state.profile.userId]; 
+  if (!groupName) return toast('⚠️ Penamaan grup tidak boleh vakum.');
+  
+  const checkboxes = document.querySelectorAll('.group-member-checkbox:checked');
+  if (checkboxes.length === 0) return toast('⚠️ Minimum harus mencentang satu delegasi anggota.');
+  
+  let members = [String(state.profile.userId).trim()];
   checkboxes.forEach(chk => members.push(chk.value));
+  
+  $('createGroupModal').style.display = 'none';
+  toast('⏳ Membentuk grup komunikasi privat di server...');
 
-  const newGroup = {
-    id: 'group_' + Date.now(),
-    name: groupName,
-    admin: state.profile.userId,
+  const payload = {
+    action: 'create_group',
+    groupName: groupName,
+    createdBy: String(state.profile.userId).trim(),
     members: members
   };
 
-  chatGroups.push(newGroup);
-  saveLocalChatData();
-  $('createGroupModal').style.display = 'none';
-  renderChatRoomsList();
-  switchChatRoom(newGroup.id, `👥 Grup: ${groupName}`);
-  toast('🎉 Grup berhasil dibuat!');
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    
+    if(data.status === 'success') {
+        toast('🎉 Grup berhasil dibuat!');
+        fetchChatMessages(); // Segarkan agar grup baru muncul di menu sebelah kiri
+    } else {
+        toast('❌ Gagal membuat grup.');
+    }
+  } catch(e) {
+    toast('❌ Koneksi ke server terputus.');
+  }
+}
 
   const payload = {
       timestamp: new Date().toISOString(),
@@ -2042,24 +2042,26 @@ document.addEventListener('click', (e) => {
 
 // Perbaikan Reaksi Pesan agar Sinkron ke Server dan Tersimpan Permanen
 window.reactToMsg = async function(timestamp, emoji) {
-    const msg = allChatMessages.find(m => String(m.timestamp) === String(timestamp));
-    if(msg) {
-        if(!msg.reactions || typeof msg.reactions !== 'object') msg.reactions = {};
-        msg.reactions[emoji] = (Number(msg.reactions[emoji]) || 0) + 1;
-        saveLocalChatData();
-        renderChatMessages();
+  const myId = String(state.profile.userId).trim();
+  const payload = {
+      action: "react_chat",
+      timestamp: timestamp,
+      userId: myId,
+      reaction: emoji
+  };
 
-        const myId = String(state.profile.userId).trim();
-        const reactionPayload = {
-            action: "react_chat",
-            timestamp: timestamp,
-            senderId: myId,
-            reactions: JSON.stringify(msg.reactions)
-        };
-        try {
-            await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(reactionPayload) });
-        } catch(e) {}
-    }
+  try {
+      const res = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if(data.status === 'success') {
+          fetchChatMessages(); // Segarkan tampilan agar emoji terlihat oleh semua orang (Live Sync)
+      }
+  } catch(e) {
+      toast('❌ Gagal memberikan reaksi.');
+  }
 };
 
 function prepareReplyChat(encodedJson) {
@@ -2110,47 +2112,44 @@ async function sendChatMessage() {
   if(!state.profile.userId || !state.profile.userName) return toast('⚠️ Mohon lengkapi profil terlebih dahulu!');
   
   const myId = String(state.profile.userId).trim();
+  const newTimestamp = new Date().toISOString();
+  
+  // Deteksi Tipe Obrolan (Grup / Publik / Privat)
+  let chatType = 'private';
+  if (currentActiveRecipient === 'GENERAL') chatType = 'public';
+  else if (currentActiveRecipient.startsWith('GROUP_') || currentActiveRecipient.startsWith('group_')) chatType = 'group';
 
-  if (editingTimestamp) {
-    const target = allChatMessages.find(m => String(m.timestamp) === String(editingTimestamp));
-    if (target) {
-        target.message = message;
+  const payload = {
+    timestamp: newTimestamp,
+    action: "send_chat",
+    senderId: myId,
+    senderName: state.profile.userName,
+    recipientId: currentActiveRecipient,
+    message: message,
+    type: chatType,
+    photo: pendingChatMedia || '' // Mengirim Foto ke server Google Drive
+  };
+
+  input.value = 'Mengirim pesan...';
+  input.disabled = true;
+
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+    const out = await res.json();
+    
+    if(out.status === 'success') {
+        input.value = '';
+        removeChatPhoto();
+        fetchChatMessages(); // Langsung update dari server
     }
-    saveLocalChatData();
-    const activeEditTS = editingTimestamp;
-    cancelEditChat(); 
-    renderChatMessages(); 
-    toast('✏️ Pembaruan tersimpan');
-    
-    const editPayload = { action: "edit_chat", timestamp: activeEditTS, senderId: myId, newMessage: message };
-    try { 
-        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(editPayload) }); 
-    } catch(e) {}
-  } else {
-    const newTimestamp = new Date().toISOString();
-    let replyPayloadData = null;
-    if (replyingMessageData) { replyPayloadData = { senderName: replyingMessageData.senderName, message: replyingMessageData.message }; }
-    
-    const isCustomGroup = chatGroups.some(g => g.id === currentActiveRecipient);
-    const payload = { 
-        timestamp: newTimestamp, action: "send_chat", senderId: myId, senderName: state.profile.userName, 
-        recipientId: currentActiveRecipient, message: message, 
-        type: (currentActiveRecipient === 'GENERAL' || isCustomGroup) ? 'group' : 'private', 
-        photo: state.profile.photo || '', 
-        replyTo: replyPayloadData ? JSON.stringify(replyPayloadData) : '',
-        media: pendingChatMedia || null,
-        reactions: {}
-    };
-
-    allChatMessages.push(payload);
-    saveLocalChatData();
-
-    cancelReplyChat(); 
-    removeChatPhoto(); 
-    input.value = '';
-    renderChatMessages(); 
-    
-    try { await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(payload) }); } catch(e) {}
+  } catch(e) {
+    toast('❌ Gagal mengirim pesan ke server.');
+  } finally {
+    input.disabled = false;
+    input.focus();
   }
 }
 
