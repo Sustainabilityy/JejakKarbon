@@ -8850,3 +8850,23 @@ html[data-theme="dark"] .modal-overlay *:not(:is([class*="badge"],[class*="badge
 /* Icons/SVGs that inherit color via currentColor still read fine on
    a dark surface since gk-ink is light — no separate rule needed. */
 </style>
+<style id="dark-mode-gradient-text-fix-v6">
+/* ============================================================
+   DARK MODE — GRADIENT-TEXT FIX
+   These headings render their visible color via a background
+   gradient clipped to the text shape (color:transparent), which
+   a plain `color` override can never reach — that's why they kept
+   looking dim/muddy in dark mode no matter what else was fixed.
+   In dark mode we simply drop the clip and show solid, guaranteed
+   -readable ink text instead.
+   ============================================================ */
+html[data-theme="dark"] #dashboard .donut-center strong,
+html[data-theme="dark"] #dashboard .break-row em,
+html[data-theme="dark"] #dashboard .kpi-box strong{
+  background:none!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  -webkit-text-fill-color:var(--gk-ink)!important;
+  color:var(--gk-ink)!important;
+}
+</style>
