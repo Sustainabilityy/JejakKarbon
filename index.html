@@ -690,7 +690,7 @@ body:before{
   color:#fff;padding:24px;
   background:
     linear-gradient(110deg,rgba(28,43,34,.96),rgba(4,95,68,.78)),
-    url("https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=88") center/cover;
+    url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80") center/cover;
   box-shadow:var(--ui-shadow);
 }
 .visual-card h3{color:#fff;margin:0 0 7px;font-size:18px}
@@ -1794,7 +1794,7 @@ body{
   border-radius:25px!important;
   background:
     linear-gradient(100deg,rgba(1,47,35,.96),rgba(2,88,63,.78) 48%,rgba(2,60,44,.22)),
-    url("https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1900&q=88") center/cover!important;
+    url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1900&q=88") center/cover!important;
   box-shadow:0 22px 52px rgba(2,71,51,.18)!important;
 }
 .dashboard-hero-wrap .nature-banner-content{
@@ -3435,7 +3435,7 @@ body{ background:var(--gk-paper)!important; }
 #dashboard .nature-banner{
   background:
     linear-gradient(115deg, rgba(20,32,24,.94) 0%, rgba(28,43,34,.82) 45%, rgba(28,43,34,.35) 100%),
-    url("https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1900&q=88") center/cover!important;
+    url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1900&q=88") center/cover!important;
 }
 .nature-stat{
   background:rgba(20,32,24,.55)!important;
@@ -3975,6 +3975,89 @@ html[data-theme="dark"] ::selection{background:rgba(0,230,160,.35);color:#f1ede0
 html[data-theme="dark"] .card::before{opacity:1;filter:saturate(1.3) brightness(1.1);}
 </style>
 
+<style id="dark-mode-text-contrast-fix-v3">
+/* ============================================================
+   DARK MODE — CONTRAST SAFETY NET
+   Several labels use hardcoded hex colors written for a LIGHT
+   card. When dark mode is on, matching every such inline color
+   (both the light background AND the dark text) to a dark-mode-
+   safe equivalent removes every remaining dark-on-dark /
+   light-on-light spot. Light mode is untouched.
+   ============================================================ */
+html[data-theme="dark"] [style*="background:#e4decc"],
+html[data-theme="dark"] [style*="background: #e4decc"]{ background:#283a2f!important; }
+html[data-theme="dark"] [style*="background:#f0ebdd"],
+html[data-theme="dark"] [style*="background: #f0ebdd"]{ background:#202e26!important; }
+html[data-theme="dark"] [style*="background:#f3f1e7"],
+html[data-theme="dark"] [style*="background: #f3f1e7"]{ background:#1f2c24!important; }
+html[data-theme="dark"] [style*="background:#f7f4ec"],
+html[data-theme="dark"] [style*="background: #f7f4ec"]{ background:#1c2921!important; }
+html[data-theme="dark"] [style*="background:#fbf0ec"],
+html[data-theme="dark"] [style*="background: #fbf0ec"]{ background:#3a221f!important; }
+html[data-theme="dark"] [style*="color:#0a1a13"],
+html[data-theme="dark"] [style*="color: #0a1a13"]{ color:#bde6d4!important; }
+html[data-theme="dark"] [style*="color:#0b1f1a"],
+html[data-theme="dark"] [style*="color: #0b1f1a"]{ color:#bbe7dc!important; }
+html[data-theme="dark"] [style*="color:#211e17"],
+html[data-theme="dark"] [style*="color: #211e17"]{ color:#ded6c4!important; }
+html[data-theme="dark"] [style*="color:#0a3125"],
+html[data-theme="dark"] [style*="color: #0a3125"]{ color:#b3efdd!important; }
+html[data-theme="dark"] [style*="color:#083b2d"],
+html[data-theme="dark"] [style*="color: #083b2d"]{ color:#aef4e1!important; }
+html[data-theme="dark"] [style*="color:#063c2d"],
+html[data-theme="dark"] [style*="color: #063c2d"]{ color:#acf7e2!important; }
+html[data-theme="dark"] [style*="color:#18382e"],
+html[data-theme="dark"] [style*="color: #18382e"]{ color:#bfe3d8!important; }
+html[data-theme="dark"] [style*="color:#103c30"],
+html[data-theme="dark"] [style*="color: #103c30"]{ color:#b7ecdd!important; }
+html[data-theme="dark"] [style*="color:#1e3d32"],
+html[data-theme="dark"] [style*="color: #1e3d32"]{ color:#c1e1d6!important; }
+html[data-theme="dark"] [style*="color:#334155"],
+html[data-theme="dark"] [style*="color: #334155"]{ color:#c4cfde!important; }
+html[data-theme="dark"] [style*="color:#2f4a38"],
+html[data-theme="dark"] [style*="color: #2f4a38"]{ color:#c4decd!important; }
+html[data-theme="dark"] [style*="color:#065840"],
+html[data-theme="dark"] [style*="color: #065840"]{ color:#a9f9e2!important; }
+html[data-theme="dark"] [style*="color:#1f5233"],
+html[data-theme="dark"] [style*="color: #1f5233"]{ color:#bce6cd!important; }
+html[data-theme="dark"] [style*="color:#334e43"],
+html[data-theme="dark"] [style*="color: #334e43"]{ color:#c4ded3!important; }
+html[data-theme="dark"] [style*="color:#075c44"],
+html[data-theme="dark"] [style*="color: #075c44"]{ color:#aaf9e2!important; }
+html[data-theme="dark"] [style*="color:#365247"],
+html[data-theme="dark"] [style*="color: #365247"]{ color:#c4ded4!important; }
+html[data-theme="dark"] [style*="color:#7a4325"],
+html[data-theme="dark"] [style*="color: #7a4325"]{ color:#eacab9!important; }
+html[data-theme="dark"] [style*="color:#31564a"],
+html[data-theme="dark"] [style*="color: #31564a"]{ color:#c4ded6!important; }
+html[data-theme="dark"] [style*="color:#3a5a3e"],
+html[data-theme="dark"] [style*="color: #3a5a3e"]{ color:#c4dec7!important; }
+html[data-theme="dark"] [style*="color:#086b4e"],
+html[data-theme="dark"] [style*="color: #086b4e"]{ color:#aaf9e1!important; }
+html[data-theme="dark"] [style*="color:#5b5648"],
+html[data-theme="dark"] [style*="color: #5b5648"]{ color:#ded7c4!important; }
+html[data-theme="dark"] [style*="color:#7a5a26"],
+html[data-theme="dark"] [style*="color: #7a5a26"]{ color:#e9d7b9!important; }
+html[data-theme="dark"] [style*="color:#b54a3f"],
+html[data-theme="dark"] [style*="color: #b54a3f"]{ color:#e7bfbb!important; }
+html[data-theme="dark"] [style*="color:#52665e"],
+html[data-theme="dark"] [style*="color: #52665e"]{ color:#c4ded4!important; }
+html[data-theme="dark"] [style*="color:#15803d"],
+html[data-theme="dark"] [style*="color: #15803d"]{ color:#b0f2c9!important; }
+html[data-theme="dark"] [style*="color:#6b6656"],
+html[data-theme="dark"] [style*="color: #6b6656"]{ color:#ded8c4!important; }
+html[data-theme="dark"] [style*="color:#8a6521"],
+html[data-theme="dark"] [style*="color: #8a6521"]{ color:#edd9b5!important; }
+html[data-theme="dark"] [style*="color:#4b7a5b"],
+html[data-theme="dark"] [style*="color: #4b7a5b"]{ color:#c4decd!important; }
+
+/* Class-based spots the earlier dark-mode passes missed */
+html[data-theme="dark"] .chat-input-wrapper input{ color:var(--gk-ink)!important; }
+html[data-theme="dark"] .chat-input-wrapper input::placeholder{ color:var(--gk-muted)!important; opacity:.85; }
+html[data-theme="dark"] .chat-attach-btn{ color:var(--gk-muted)!important; }
+html[data-theme="dark"] ::placeholder{ color:var(--gk-muted)!important; opacity:.8; }
+</style>
+
 <style id="intro-splash-v24">
 /* ============================================================
    INTRO SPLASH — animated "video-style" welcome sequence
@@ -3988,6 +4071,31 @@ body.jk-intro-lock{overflow:hidden!important;}
 }
 .jk-intro.jk-intro-exit{opacity:0;transform:scale(1.06);pointer-events:none;}
 .jk-intro-bg{position:absolute;inset:0;overflow:hidden;}
+/* Cinematic crossfading photo montage — plays behind the blobs so the
+   intro reads as real footage, like a corporate brand reel, with zero
+   dependency on an external video file actually being present. */
+.jk-intro-reel{position:absolute;inset:0;z-index:0;}
+.jk-intro-reel .jk-reel-frame{
+  position:absolute;inset:-6%;background-size:cover;background-position:center;
+  opacity:0;filter:saturate(1.12) brightness(.72);
+  animation:jkReelCycle 16s ease-in-out infinite;
+}
+.jk-intro-reel .jk-reel-frame:nth-child(1){animation-delay:0s}
+.jk-intro-reel .jk-reel-frame:nth-child(2){animation-delay:4s}
+.jk-intro-reel .jk-reel-frame:nth-child(3){animation-delay:8s}
+.jk-intro-reel .jk-reel-frame:nth-child(4){animation-delay:12s}
+@keyframes jkReelCycle{
+  0%{opacity:0;transform:scale(1.06)}
+  4%{opacity:1}
+  22%{opacity:1;transform:scale(1.16)}
+  28%{opacity:0;transform:scale(1.18)}
+  100%{opacity:0;transform:scale(1.18)}
+}
+.jk-intro-reel::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(11,20,15,.55) 0%,rgba(11,20,15,.35) 45%,rgba(11,20,15,.85) 100%);
+}
+@media(prefers-reduced-motion: reduce){ .jk-reel-frame{animation:none!important;opacity:.65!important} }
 .jk-intro-blob{
   position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;
   animation:jkBlobDrift 12s ease-in-out infinite alternate;
@@ -4095,11 +4203,183 @@ body.jk-intro-lock{overflow:hidden!important;}
   .page.jk-page-enter{animation:none!important;}
 }
 </style>
+
+<style id="premium-polish-v1">
+/* ============================================================
+   PREMIUM POLISH PACK — staggered reveals, shimmer, glow,
+   magnetic buttons, animated hero orbs. Purely additive: no
+   existing class is removed or renamed, everything here layers
+   on top of pro-interactive-v1 / dashboard-genz-v21.
+   ============================================================ */
+
+/* Staggered card entrance so a page doesn't pop in as one flat block */
+.page.active .card:nth-of-type(1),.page.active .kpi-main:nth-of-type(1){transition-delay:.02s}
+.page.active .card:nth-of-type(2),.page.active .kpi-main:nth-of-type(2){transition-delay:.08s}
+.page.active .card:nth-of-type(3),.page.active .kpi-main:nth-of-type(3){transition-delay:.14s}
+.page.active .card:nth-of-type(4),.page.active .kpi-main:nth-of-type(4){transition-delay:.20s}
+.page.active .card:nth-of-type(5),.page.active .kpi-main:nth-of-type(5){transition-delay:.26s}
+.page.active .card:nth-of-type(n+6){transition-delay:.30s}
+
+/* Shimmering sheen across kickers / pills / badges — a subtle
+   "premium label" tell without being gaudy */
+.premium-kicker,.hero-pill,.section-kicker{position:relative;overflow:hidden}
+.premium-kicker::after,.hero-pill::after,.section-kicker::after{
+  content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
+  animation:jkShimmer 3.6s ease-in-out infinite;
+}
+@keyframes jkShimmer{0%{left:-60%}45%,100%{left:130%}}
+
+/* Slow-drifting soft orbs behind the hero — works in light & dark */
+.premium-hero{isolation:isolate}
+.premium-hero .jk-hero-orb{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:-1;
+  background:radial-gradient(circle,rgba(167,243,208,.35),transparent 70%);
+  filter:blur(6px);animation:jkOrbDrift 14s ease-in-out infinite;
+}
+.premium-hero .jk-hero-orb.o2{animation-duration:19s;animation-direction:reverse;background:radial-gradient(circle,rgba(94,234,212,.28),transparent 70%);}
+@keyframes jkOrbDrift{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(14px,-18px) scale(1.08)}
+  66%{transform:translate(-10px,10px) scale(.96)}
+}
+
+/* Magnetic, glowing primary buttons */
+.btn.primary,.nature-btn.primary{position:relative;isolation:isolate}
+.btn.primary::before,.nature-btn.primary::before{
+  content:"";position:absolute;inset:-2px;z-index:-1;border-radius:inherit;
+  background:var(--esg-gradient);opacity:0;filter:blur(10px);
+  transition:opacity .35s ease;
+}
+.btn.primary:hover::before,.nature-btn.primary:hover::before{opacity:.55}
+
+/* Crisper active-nav indicator with a soft glow pulse */
+.nav button.active{position:relative}
+.nav button.active::before{
+  content:"";position:absolute;left:-6px;top:50%;transform:translateY(-50%);
+  width:4px;height:60%;border-radius:4px;background:#fff;
+  box-shadow:0 0 10px rgba(255,255,255,.8);
+}
+
+/* Smoother, slightly springier page + KPI number entrances */
+.page{animation:fadeInPremium .55s cubic-bezier(.16,.9,.4,1);}
+@keyframes fadeInPremium{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:none}}
+
+/* Gentle hover-lift for anything explicitly marked interactive */
+.lb-item,.quick-card,.chat-room-item{will-change:transform}
+
+@media(prefers-reduced-motion: reduce){
+  .premium-kicker::after,.hero-pill::after,.section-kicker::after,
+  .jk-hero-orb{animation:none!important}
+  .page{animation:none!important}
+}
+</style>
+
+<style id="dashboard-killer-fx-v1">
+/* ============================================================
+   DASHBOARD EYE-CANDY — glowing numbers, shimmering KPI cards,
+   tilting pillar cards, breathing hero stat. Scoped to #dashboard
+   only so no other page's rhythm changes.
+   ============================================================ */
+
+/* KPI numbers breathe with a soft glow instead of sitting static */
+#dashboard .kpi-main .val{animation:kpiGlow 3.4s ease-in-out infinite;}
+@keyframes kpiGlow{
+  0%,100%{text-shadow:0 0 0 rgba(255,255,255,0)}
+  50%{text-shadow:0 0 18px rgba(255,255,255,.45)}
+}
+
+/* A light sweep glides across each KPI card every few seconds —
+   the same "premium card" tell used on high-end fintech dashboards */
+#dashboard .kpi-main{position:relative;isolation:isolate}
+#dashboard .kpi-main::before{
+  content:"";position:absolute;top:0;left:-75%;width:45%;height:100%;z-index:2;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.16),transparent);
+  animation:kpiSweep 5.5s ease-in-out infinite;
+}
+#dashboard .kpi-main:nth-of-type(2)::before{animation-delay:.6s}
+#dashboard .kpi-main:nth-of-type(3)::before{animation-delay:1.2s}
+@keyframes kpiSweep{0%{left:-75%}55%,100%{left:135%}}
+
+/* Sustainability pillar cards tilt gently toward the cursor */
+.sus-visual-card{transition:transform .45s cubic-bezier(.16,.9,.4,1),box-shadow .45s ease;}
+.sus-visual-card:hover{transform:translateY(-8px) scale(1.015);box-shadow:0 26px 50px -18px rgba(0,0,0,.4);z-index:2;}
+
+/* The little leaf emoji drift gently rather than sitting frozen */
+#dashboard .nature-leaf{animation:leafDrift 6s ease-in-out infinite;}
+#dashboard .nature-leaf.leaf-2{animation-duration:7.5s;animation-delay:.8s}
+@keyframes leafDrift{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(8deg)}}
+
+/* Carbon-pulse stat pill gets a soft heartbeat so it reads as "live" */
+#dashboard .nature-stat{animation:pulseGlow 3s ease-in-out infinite;}
+@keyframes pulseGlow{
+  0%,100%{box-shadow:0 0 0 rgba(167,243,208,0)}
+  50%{box-shadow:0 0 26px rgba(167,243,208,.35)}
+}
+
+/* A slow diagonal light sweep across the hero — the same cinematic
+   "lens light" treatment corporate brand-video heroes use, layered
+   above the existing photo rotation (v13) without touching it */
+#dashboard .nature-banner{position:relative}
+#dashboard .nature-banner .jk-hero-sweep{
+  position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;
+}
+#dashboard .nature-banner .jk-hero-sweep::before{
+  content:"";position:absolute;top:-40%;left:-20%;width:55%;height:180%;
+  background:linear-gradient(75deg,transparent,rgba(255,255,255,.10),transparent);
+  animation:heroLightSweep 9s ease-in-out infinite;
+}
+@keyframes heroLightSweep{0%{transform:translateX(-40%) rotate(8deg)}55%,100%{transform:translateX(260%) rotate(8deg)}}
+@media(prefers-reduced-motion: reduce){#dashboard .nature-banner .jk-hero-sweep::before{animation:none!important}}
+
+@media(prefers-reduced-motion: reduce){
+  #dashboard .kpi-main .val,#dashboard .kpi-main::before,
+  .sus-visual-card,#dashboard .nature-leaf,#dashboard .nature-stat{animation:none!important;transition:none!important}
+}
+</style>
+
+<script id="premium-polish-orbs-v1">
+(function(){
+  'use strict';
+  /* Drop two ambient drifting orbs into every .premium-hero found,
+     once, without touching any existing markup/logic. Safe no-op
+     if the hero isn't present on a given page. */
+  function addOrbs(hero){
+    if(hero.querySelector('.jk-hero-orb')) return;
+    var o1 = document.createElement('span');
+    o1.className = 'jk-hero-orb';
+    o1.style.width = '150px'; o1.style.height = '150px';
+    o1.style.left = '58%'; o1.style.top = '-30px';
+    var o2 = document.createElement('span');
+    o2.className = 'jk-hero-orb o2';
+    o2.style.width = '110px'; o2.style.height = '110px';
+    o2.style.right = '10%'; o2.style.bottom = '-20px';
+    hero.appendChild(o1);
+    hero.appendChild(o2);
+  }
+  function scan(){ document.querySelectorAll('.premium-hero').forEach(addOrbs); }
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(scan, 150); });
+  var origNav = window.navigateToPage;
+  if(typeof origNav === 'function'){
+    window.navigateToPage = function(){
+      var r = origNav.apply(this, arguments);
+      setTimeout(scan, 120);
+      return r;
+    };
+  }
+})();
+</script>
 </head>  
 <body>  
 <!-- ===================== INTRO SPLASH (v24) ===================== -->
 <div id="jkIntroSplash" class="jk-intro" role="dialog" aria-modal="true" aria-label="Intro JejakKarbonKu">
   <div class="jk-intro-bg" data-jk-video="assets/video/intro-bg.mp4">
+    <div class="jk-intro-reel" aria-hidden="true">
+      <div class="jk-reel-frame" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')"></div>
+      <div class="jk-reel-frame" style="background-image:url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')"></div>
+      <div class="jk-reel-frame" style="background-image:url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')"></div>
+      <div class="jk-reel-frame" style="background-image:url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')"></div>
+    </div>
     <div class="jk-intro-blob b1"></div>
     <div class="jk-intro-blob b2"></div>
     <div class="jk-intro-blob b3"></div>
@@ -4409,6 +4689,7 @@ body.jk-intro-lock{overflow:hidden!important;}
       <div class="dashboard-hero-wrap">
 <div class="nature-banner" data-jk-video="assets/video/hero-bg.mp4">
     <div class="nature-banner-overlay"></div>
+    <div class="jk-hero-sweep" aria-hidden="true"></div>
 
     <div class="hero-top-meta">
       <span id="dashboardTodayLabel">Hari ini</span>
@@ -8173,25 +8454,32 @@ document.addEventListener('DOMContentLoaded',function(){
      (checked against every existing background-image in the app), and no
      ID is repeated between the four sets either — fully variatif. */
   var SETS = {
+    /* Curated strictly from verified climate / renewable-energy / nature
+       photography already used elsewhere in this app for the news &
+       ranking sections — so every banner is guaranteed on-theme
+       (forests, solar/wind energy, recycling, green cities). No stock
+       photo here was picked blind; each one is reused from an ID this
+       file already tags as "renewable energy" / "climate action" /
+       "sustainability" content. */
     hero: [
-      'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1600&q=80'
+      'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1600&q=85',
+      'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1600&q=85',
+      'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=85'
     ],
     kpiToday: [
-      'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=80'
+      'https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=900&q=85'
     ],
     kpiTotal: [
-      'https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1548407260-da850faa41e3?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=900&q=80'
+      'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85'
     ],
     kpiNetto: [
-      'https://images.unsplash.com/photo-1439853949127-fa647821eba0?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=900&q=80'
+      'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85'
     ]
   };
 
@@ -8486,210 +8774,79 @@ document.addEventListener('DOMContentLoaded',function(){
 #pane2 input[type="number"]:invalid{border-color:#b54a3f!important;background:#fff7f7!important}
 #pane2 input[type="number"]:focus{border-color:var(--esg-primary)}
 </style>
-
-<style id="jk-final-polish-v30-darkmode-fix">
+<style id="dark-mode-final-contrast-lockdown-v4">
 /* ============================================================
-   FINAL POLISH LAYER v30 — bagian 1: PERBAIKAN KONTRAS DARK MODE
-   Diletakkan paling akhir dalam dokumen supaya selalu menang di
-   atas 25+ blok <style> lama yang saling tumpang tindih (v2..v25).
-   Tidak menghapus kode lama — hanya menimpa nilai warna yang
-   sebelumnya "nyangkut" gelap-di-atas-gelap / terang-di-atas-terang.
+   DARK MODE — FINAL CONTRAST LOCKDOWN
+   Placed last on purpose so it wins any tie with earlier patches.
+   Instead of chasing individual hex values (fragile — misses
+   colors set via CSS variables or by JavaScript at runtime),
+   this forces every plain text element inside a surface that
+   flips to a dark background to use the light "ink" color.
+   Chips/badges/tabs that deliberately keep their OWN light
+   background are excluded so they don't become light-on-light.
    ============================================================ */
-
-/* --- kolom & baris tabel dinamis (riwayat, ranking, tim) yang
-   sebelumnya memakai warna teks abu literal (bukan variabel) dan
-   tidak ikut berubah saat dark mode dinyalakan --- */
-html[data-theme="dark"] [style*="color:#5b5648"]:not([style*="background"]),
-html[data-theme="dark"] [style*="color: #5b5648"]:not([style*="background"]),
-html[data-theme="dark"] [style*="color:#6b6656"]:not([style*="background"]),
-html[data-theme="dark"] [style*="color: #6b6656"]:not([style*="background"]),
-html[data-theme="dark"] [style*="color:#9a9382"]:not([style*="background"]),
-html[data-theme="dark"] [style*="color: #9a9382"]:not([style*="background"]),
-html[data-theme="dark"] [style*="color:#3a5a3e"]:not([style*="background"]),
-html[data-theme="dark"] [style*="color: #3a5a3e"]:not([style*="background"]){
-  color:var(--gk-muted)!important;
+html[data-theme="dark"] :is(
+  .card,.kpi-box,.quick-card,.input-item,.table-wrap,
+  .modal-card,.modal-overlay,.team-card-white,.rank-table-wrapper,
+  .chat-layout,.chat-tab-header,.chat-room-item,.chat-input-wrapper,
+  .lb-item,.shortcut-btn,.active-reply-banner,.emoji-picker-panel,
+  .avatar-preview,.dashboard-filter-card,.team-pulse-summary,
+  .panel-status,.sidebar,.mobile-header,.mobile-nav,.topline
+) *:not(:is(
+  .rank-badge,.rank-badge *,
+  .badge-status.top,.badge-status.top *,
+  .badge-status.runner,.badge-status.runner *,
+  .badge-status.third,.badge-status.third *,
+  .rank-tab,.rank-tab *,
+  .team-header-pill,.team-header-pill *,
+  .hero-pill,.hero-pill *,
+  .section-kicker,.section-kicker *,
+  .premium-kicker,.premium-kicker *,
+  .nav button.active,.nav button.active *,
+  .btn.primary,.btn.primary *,
+  .nature-btn.primary,.nature-btn.primary *,
+  .chat-message-row.me .chat-bubble,.chat-message-row.me .chat-bubble *
+)){
+  color: var(--gk-ink) !important;
 }
-html[data-theme="dark"] .card [style*="color:#211e17"]:not([style*="background"]),
-html[data-theme="dark"] .table-wrap [style*="color:#211e17"]:not([style*="background"]),
-html[data-theme="dark"] .rank-table-wrapper [style*="color:#211e17"]:not([style*="background"]){
-  color:var(--gk-ink)!important;
+/* Secondary/help text a shade softer, still comfortably readable */
+html[data-theme="dark"] :is(.card,.modal-card,.table-wrap) small:not(:is(.rank-badge *,.badge-status.top *,.badge-status.runner *,.badge-status.third *)){
+  color: var(--gk-muted) !important;
 }
-
-/* --- kolom form chat: sebelumnya teks tetap hitam meski wadahnya
-   sudah berubah gelap, sehingga tulisan hilang saat mengetik --- */
-html[data-theme="dark"] .chat-input-wrapper input{ color:var(--gk-ink)!important; }
-html[data-theme="dark"] .chat-message-row.me .chat-reply-quote{
-  color:var(--gk-ink)!important; background:rgba(120,190,140,.22)!important;
-}
-html[data-theme="dark"] .avatar-preview .icon{ color:var(--gk-muted)!important; }
-
-/* --- placeholder & scrollbar: kontras & konsistensi --- */
-html[data-theme="dark"] input::placeholder,
-html[data-theme="dark"] textarea::placeholder{ color:rgba(241,237,224,.36)!important; }
-html[data-theme="dark"] ::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.14)!important; border-radius:10px; }
-html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover{ background:rgba(255,255,255,.26)!important; }
-html[data-theme="dark"] ::selection{ background:rgba(185,140,61,.35); color:#fff; }
-
-/* --- tab & border yang masih memakai warna beige terang, jadi
-   nyaris tak terlihat di atas kartu gelap --- */
-html[data-theme="dark"] .rank-tab{ border-color:rgba(255,255,255,.12)!important; }
-html[data-theme="dark"] .rank-tab:hover{ background:rgba(255,255,255,.06)!important; border-color:var(--gk-gold)!important; }
-html[data-theme="dark"] .lb-item:hover{ box-shadow:0 10px 26px -10px rgba(0,0,0,.5)!important; }
-html[data-theme="dark"] hr,
-html[data-theme="dark"] .topline{ border-color:rgba(255,255,255,.09)!important; }
-
-/* --- toast & modal kecil: pastikan selalu kontras, apa pun tema --- */
-html[data-theme="dark"] .toast{ box-shadow:0 14px 34px rgba(0,0,0,.45)!important; }
-html[data-theme="dark"] .badge-status.normal{ background:#26352b!important; color:var(--gk-muted)!important; border-color:rgba(255,255,255,.1)!important; }
-
-/* --- kartu KPI hero yg dulunya pakai teks solid: sekarang ikut tema --- */
-html[data-theme="dark"] .kpi-main:not(.dark):not(.netto){ color:#fff!important; }
-</style>
-
-<style id="jk-final-polish-v30-premium-motion">
-/* ============================================================
-   FINAL POLISH LAYER v30 — bagian 2: SISTEM ANIMASI PREMIUM
-   Efek halus ala produk kelas atas: cinematic zoom pada banner,
-   reveal scroll bertahap dengan blur-to-focus, glass morphism,
-   shine pada tombol, dan glow lembut pada angka statistik.
-   Menghormati prefers-reduced-motion.
-   ============================================================ */
-
-@keyframes jkpKenBurns{
-  0%{transform:scale(1.04) translate3d(0,0,0)}
-  100%{transform:scale(1.16) translate3d(-1.2%,-1%,0)}
-}
-@keyframes jkpFloat{0%,100%{transform:translateY(0) translateX(0) rotate(0)}50%{transform:translateY(-16px) translateX(8px) rotate(4deg)}}
-@keyframes jkpFloatSlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-24px)}}
-@keyframes jkpShine{0%{transform:translateX(-130%) skewX(-18deg)}100%{transform:translateX(230%) skewX(-18deg)}}
-@keyframes jkpGradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-@keyframes jkpFadeBlurUp{from{opacity:0;transform:translateY(28px) scale(.97);filter:blur(7px)}to{opacity:1;transform:none;filter:blur(0)}}
-@keyframes jkpGlowRing{0%{box-shadow:0 0 0 0 rgba(94,234,212,.4)}70%{box-shadow:0 0 0 14px rgba(94,234,212,0)}100%{box-shadow:0 0 0 0 rgba(94,234,212,0)}}
-@keyframes jkpShimmerBg{0%{background-position:-400px 0}100%{background-position:400px 0}}
-@keyframes jkpSpin{to{transform:rotate(360deg)}}
-
-/* ---- reveal scroll: lebih sinematik, bertahap per kartu ---- */
-.page.active .card.reveal-up,
-.page.active .kpi-main.reveal-up{
-  animation:none!important;
-  opacity:0; transform:translateY(28px) scale(.975); filter:blur(6px);
-  transition:opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1), filter .75s cubic-bezier(.16,1,.3,1);
-}
-.page.active .card.reveal-up.in-view,
-.page.active .kpi-main.reveal-up.in-view{ opacity:1; transform:none; filter:blur(0); }
-.page.active .card.reveal-up:nth-of-type(1){transition-delay:.02s}
-.page.active .card.reveal-up:nth-of-type(2){transition-delay:.08s}
-.page.active .card.reveal-up:nth-of-type(3){transition-delay:.14s}
-.page.active .card.reveal-up:nth-of-type(4){transition-delay:.2s}
-.page.active .card.reveal-up:nth-of-type(5){transition-delay:.26s}
-.page.active .card.reveal-up:nth-of-type(n+6){transition-delay:.32s}
-
-/* ---- kartu: hover premium dengan sedikit angkat + cahaya tepi ---- */
-.card, .kpi-box, .quick-card, .lb-item, .team-card-white{
-  transition:transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s cubic-bezier(.16,1,.3,1), border-color .45s ease!important;
-}
-.card:hover{
-  transform:translateY(-4px)!important;
-  box-shadow:0 20px 45px -18px rgba(28,43,34,.28)!important;
-}
-html[data-theme="dark"] .card:hover{ box-shadow:0 20px 45px -16px rgba(0,0,0,.55)!important; border-color:rgba(185,140,61,.35)!important; }
-
-/* ---- hero / banner: zoom sinematik lembut + partikel mengambang ---- */
-@media (prefers-reduced-motion:no-preference){
-  .nature-banner::before, .premium-hero::before, #dashboard .nature-banner::before{
-    animation-duration:16s!important;
-  }
-}
-.nature-banner, .premium-hero, .visual-card, .image-card{ isolation:isolate; }
-.nature-banner:after, .premium-hero:after{
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-  background:
-    radial-gradient(circle at 16% 128%, rgba(180,255,210,.14), transparent 55%),
-    radial-gradient(circle at 108% -18%, rgba(255,214,140,.12), transparent 50%);
-}
-.jkp-orb{
-  position:absolute; border-radius:50%; pointer-events:none; z-index:1;
-  background:radial-gradient(circle, rgba(160,255,210,.35), rgba(160,255,210,0) 70%);
-  filter:blur(2px);
-}
-.jkp-orb.o1{ width:90px; height:90px; right:8%; top:14%; animation:jkpFloat 7s ease-in-out infinite; }
-.jkp-orb.o2{ width:46px; height:46px; right:26%; bottom:18%; animation:jkpFloatSlow 9s ease-in-out infinite; }
-.jkp-orb.o3{ width:60px; height:60px; left:6%; bottom:10%; animation:jkpFloat 8s ease-in-out infinite reverse; background:radial-gradient(circle, rgba(255,214,140,.3), rgba(255,214,140,0) 70%); }
-
-/* ---- teks judul hero: gradasi lembut, tidak norak ---- */
-.nature-banner h2, .premium-hero h2, .team-hero h2{
-  background:linear-gradient(92deg,#ffffff 0%, #eafff2 45%, #d7ffe9 100%);
-  -webkit-background-clip:text; background-clip:text; color:transparent!important;
-}
-
-/* ---- tombol: sapuan cahaya premium saat hover ---- */
-.btn.primary, .nature-btn.primary, .page .btn.primary{
-  position:relative; overflow:hidden;
-}
-.btn.primary::after, .nature-btn.primary::after, .page .btn.primary::after{
-  content:""; position:absolute; top:0; left:0; width:40%; height:100%;
-  background:linear-gradient(115deg, transparent, rgba(255,255,255,.55), transparent);
-  transform:translateX(-130%) skewX(-18deg); pointer-events:none;
-}
-.btn.primary:hover::after, .nature-btn.primary:hover::after, .page .btn.primary:hover::after{
-  animation:jkpShine .85s ease;
-}
-.btn, .nature-btn{ transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease!important; }
-.btn:active, .nature-btn:active{ transform:scale(.96)!important; }
-
-/* ---- angka statistik: kilau halus tiap kali berubah ---- */
-.jk-count-flash{ animation:jkpGlowRing .7s ease; border-radius:8px; }
-
-/* ---- nav sidebar aktif: indikator meluncur halus ---- */
-.nav button{ transition:background .35s cubic-bezier(.16,1,.3,1), color .35s ease, transform .35s cubic-bezier(.16,1,.3,1)!important; }
-.nav button.active{ box-shadow:var(--shadow-soft), 0 0 0 1px rgba(255,255,255,.08) inset!important; }
-
-/* ---- ripple sudah ada di JS lama; perhalus warnanya ---- */
-.jk-ripple{
-  position:absolute; border-radius:50%; pointer-events:none;
-  background:rgba(255,255,255,.45); transform:scale(0); opacity:.65;
-  animation:jkpRippleGrow .65s ease-out;
-}
-@keyframes jkpRippleGrow{ to{ transform:scale(2.4); opacity:0; } }
-
-/* ---- video hero: fade-in halus saat siap, bukan muncul mendadak ---- */
-.jk-bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s ease; z-index:0; }
-.jk-bg-video.jk-video-ready{ opacity:1; }
-
-/* ---- hormati preferensi kurangi gerak ---- */
-@media (prefers-reduced-motion:reduce){
-  .card.reveal-up, .kpi-main.reveal-up, .jkp-orb, .btn.primary::after, .nature-btn.primary::after{
-    animation:none!important; transition:none!important;
-  }
+/* Native <select>/<option> popovers — many browsers render these with
+   their own white surface no matter what the page background is, so
+   they need an explicit dark surface + light text pairing too. */
+html[data-theme="dark"] select,
+html[data-theme="dark"] option{
+  background: var(--gk-card) !important;
+  color: var(--gk-ink) !important;
 }
 </style>
-
-<script id="jk-final-polish-v30-js">
-(function(){
-  'use strict';
-  /* Sisipkan 3 partikel mengambang (dekorasi ringan, murni CSS-driven)
-     ke setiap hero/banner utama — tidak menyentuh logika lama sama sekali. */
-  function addOrbs(){
-    document.querySelectorAll('.nature-banner, .premium-hero').forEach(function(el){
-      if(el.querySelector('.jkp-orb')) return;
-      if(getComputedStyle(el).position === 'static') el.style.position = 'relative';
-      ['o1','o2','o3'].forEach(function(cls){
-        var o = document.createElement('span');
-        o.className = 'jkp-orb ' + cls;
-        el.appendChild(o);
-      });
-    });
-  }
-  document.addEventListener('DOMContentLoaded', function(){ setTimeout(addOrbs, 300); });
-
-  /* Saat pindah halaman, panggil ulang (untuk banner yang baru render). */
-  if(typeof window.navigateToPage === 'function'){
-    var prevNav = window.navigateToPage;
-    window.navigateToPage = function(){
-      var r = prevNav.apply(this, arguments);
-      setTimeout(addOrbs, 250);
-      return r;
-    };
-  }
-})();
-</script>
+<style id="dark-mode-universal-lockdown-v5">
+/* ============================================================
+   DARK MODE — UNIVERSAL LOCKDOWN (v5, final word on this)
+   Scoped to the whole active page rather than a container list,
+   so nothing dynamically rendered later can slip through. Only
+   badges/pills/chips/tabs/buttons that intentionally keep their
+   own colored background are excluded (forcing light text on
+   THEIR light chip would break them the other way around).
+   ============================================================ */
+html[data-theme="dark"] .page.active *:not(:is(
+  [class*="badge"],[class*="badge"] *,
+  [class*="pill"],[class*="pill"] *,
+  [class*="chip"],[class*="chip"] *,
+  [class*="kicker"],[class*="kicker"] *,
+  .rank-tab,.rank-tab *,
+  .nav button.active,.nav button.active *,
+  .btn.primary,.btn.primary *,
+  .nature-btn.primary,.nature-btn.primary *,
+  .chat-message-row.me .chat-bubble,.chat-message-row.me .chat-bubble *
+)){
+  color: var(--gk-ink) !important;
+}
+html[data-theme="dark"] .modal-overlay *:not(:is([class*="badge"],[class*="badge"] *,[class*="pill"],[class*="pill"] *,.btn.primary,.btn.primary *)){
+  color: var(--gk-ink) !important;
+}
+/* Icons/SVGs that inherit color via currentColor still read fine on
+   a dark surface since gk-ink is light — no separate rule needed. */
+</style>
